@@ -1,0 +1,5 @@
+test: dev
+
+#com.example.app.prefix:
+#  testStr: string-test2
+#  testInt: 12

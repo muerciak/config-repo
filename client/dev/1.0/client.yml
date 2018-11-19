@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  datasource:
+    url: jdbc:mariadb://localhost:3306/configs
+    username: root
+    password: example
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  cloud.config.server:
+    default-profile: production
+    default-label: latest
+    jdbc.sql: SELECT `key`, `value` FROM `properties` WHERE `application`=? AND `profile`=? AND `label`=?;
+    jdbc.order: 0
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///tmp/config-repo
+server:
+  port: 9999
+
+testValue: value test2333131
+testValue2: value test not refreshable212121
+
+com.example.app.prefix:
+  testStr: string-test2
+  testInt: 115
